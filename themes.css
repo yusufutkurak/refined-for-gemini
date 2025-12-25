@@ -1,0 +1,273 @@
+/* themes.css - RENKLER VE ÖZEL YAMALAR (DÜZELTİLMİŞ) */
+
+/* --- MEVCUT KOYU TEMALAR (Aynen Korundu) --- */
+:root,
+body.theme-cyberpunk {
+    --theme-bg: #0f0518;
+    --theme-surface: #1e1035;
+    --theme-border: #3b2a5f;
+    --theme-text: #e9d5ff;
+    --theme-accent: #7c3aed;
+    --theme-accent-hover: #6d28d9;
+    --theme-title: #c084fc;
+    --theme-secondary: #2d1b4e;
+}
+
+body.theme-matrix {
+    --theme-bg: #000000;
+    --theme-surface: #0a1f0a;
+    --theme-border: #003300;
+    --theme-text: #a8f0a8;
+    --theme-accent: #00ff41;
+    --theme-accent-hover: #00cc33;
+    --theme-title: #00ff41;
+    --theme-secondary: #0f2e0f;
+}
+
+body.theme-ocean {
+    --theme-bg: #020617;
+    --theme-surface: #0f172a;
+    --theme-border: #1e293b;
+    --theme-text: #e2e8f0;
+    --theme-accent: #38bdf8;
+    --theme-accent-hover: #0ea5e9;
+    --theme-title: #7dd3fc;
+    --theme-secondary: #1e293b;
+}
+
+body.theme-sunset {
+    --theme-bg: #1c1917;
+    --theme-surface: #292524;
+    --theme-border: #44403c;
+    --theme-text: #fed7aa;
+    --theme-accent: #fb923c;
+    --theme-accent-hover: #f97316;
+    --theme-title: #fdba74;
+    --theme-secondary: #431407;
+}
+
+body.theme-dracula {
+    --theme-bg: #282a36;
+    --theme-surface: #44475a;
+    --theme-border: #6272a4;
+    --theme-text: #f8f8f2;
+    --theme-accent: #ff79c6;
+    --theme-accent-hover: #bd93f9;
+    --theme-title: #50fa7b;
+    --theme-secondary: #6272a4;
+}
+
+body.theme-forest {
+    --theme-bg: #022c22;
+    --theme-surface: #064e3b;
+    --theme-border: #065f46;
+    --theme-text: #ecfdf5;
+    --theme-accent: #34d399;
+    --theme-accent-hover: #10b981;
+    --theme-title: #6ee7b7;
+    --theme-secondary: #064e3b;
+}
+
+body.theme-nebula {
+    --theme-bg: #180a22;
+    --theme-surface: #291238;
+    --theme-border: #4a1d66;
+    --theme-text: #e9d5ff;
+    --theme-accent: #d946ef;
+    --theme-accent-hover: #c026d3;
+    --theme-title: #f0abfc;
+    --theme-secondary: #4a1d66;
+}
+
+body.theme-obsidian {
+    --theme-bg: #000000;
+    --theme-surface: #111111;
+    --theme-border: #333333;
+    --theme-text: #e5e5e5;
+    --theme-accent: #ffffff;
+    --theme-accent-hover: #cccccc;
+    --theme-title: #ffffff;
+    --theme-secondary: #222222;
+}
+
+body.theme-coffee {
+    --theme-bg: #221816;
+    --theme-surface: #362826;
+    --theme-border: #523e38;
+    --theme-text: #e6ccb2;
+    --theme-accent: #ddb892;
+    --theme-accent-hover: #b08968;
+    --theme-title: #ede0d4;
+    --theme-secondary: #3e2723;
+}
+
+body.theme-crimson {
+    --theme-bg: #1a0505;
+    --theme-surface: #380a0a;
+    --theme-border: #5c1414;
+    --theme-text: #fecaca;
+    --theme-accent: #ef4444;
+    --theme-accent-hover: #dc2626;
+    --theme-title: #fca5a5;
+    --theme-secondary: #450a0a;
+}
+
+body.theme-2077 {
+    --theme-bg: #0d0e15;
+    --theme-surface: #1a1b26;
+    --theme-border: #fcee0a;
+    --theme-text: #e2e2e2;
+    --theme-accent: #fcee0a;
+    --theme-accent-hover: #e6d808;
+    --theme-title: #00f0ff;
+    --theme-secondary: #2e2f3e;
+}
+
+body.theme-bloom {
+    --theme-bg: #150f18;
+    --theme-surface: #251b2b;
+    --theme-border: #422a4d;
+    --theme-text: #f3e6f5;
+    --theme-accent: #e879f9;
+    --theme-accent-hover: #d946ef;
+    --theme-title: #f0abfc;
+    --theme-secondary: #35223b;
+}
+
+/* --- HİBRİT / AÇIK RENK TEMALAR --- */
+body.theme-nord {
+    --theme-bg: #2e3440;
+    --theme-surface: #3b4252;
+    --theme-border: #4c566a;
+    --theme-text: #d8dee9;
+    --theme-accent: #88c0d0;
+    --theme-accent-hover: #81a1c1;
+    --theme-title: #8fbcbb;
+    --theme-secondary: #434c5e;
+}
+
+body.theme-amber {
+    --theme-bg: #101010;
+    --theme-surface: #1c1c1c;
+    --theme-border: #332b00;
+    --theme-text: #ffcc00;
+    --theme-accent: #ffb000;
+    --theme-accent-hover: #cca300;
+    --theme-title: #ffd633;
+    --theme-secondary: #262000;
+}
+
+body.theme-polar {
+    --theme-bg: #f8fafc;
+    --theme-surface: #ffffff;
+    --theme-border: #cbd5e1;
+    --theme-text: #334155;
+    --theme-accent: #dbeafe;
+    --theme-accent-hover: #bfdbfe;
+    --theme-title: #1e293b;
+    --theme-secondary: #f1f5f9;
+}
+
+body.theme-paper {
+    --theme-bg: #f3e9d2;
+    --theme-surface: #f8f1e0;
+    --theme-border: #c5bba8;
+    --theme-text: #5c4b37;
+    --theme-accent: #e6bf83;
+    --theme-accent-hover: #d4a373;
+    --theme-title: #433422;
+    --theme-secondary: #eae0c8;
+}
+
+/* --- YENİ PASTEL / SOFT TEMALAR (DÜZELTİLDİ: ULTRA SOFT) --- */
+/* Kullanıcı balonları için --theme-secondary değişkenini çok açtık */
+
+/* 1. MINT */
+body.theme-mint {
+    --theme-bg: #e8f5e9;
+    --theme-surface: #f5fbf7;
+    --theme-text: #14532d;
+    --theme-border: #86efac;
+    --theme-accent: #bbf7d0;
+    --theme-accent-hover: #86efac;
+    --theme-title: #15803d;
+    --theme-secondary: #f0fdf4;
+    /* Ultra Soft Yeşil */
+}
+
+/* 2. SAKURA */
+body.theme-sakura {
+    --theme-bg: #fff0f5;
+    --theme-surface: #fff5f8;
+    --theme-text: #880e4f;
+    --theme-border: #f48fb1;
+    --theme-accent: #f8bbd0;
+    --theme-accent-hover: #f48fb1;
+    --theme-title: #c2185b;
+    --theme-secondary: #fff1f2;
+    /* Ultra Soft Pembe */
+}
+
+/* 3. SKY */
+body.theme-sky {
+    --theme-bg: #e3f2fd;
+    --theme-surface: #f0f7ff;
+    --theme-text: #0d47a1;
+    --theme-border: #90caf9;
+    --theme-accent: #bbdefb;
+    --theme-accent-hover: #90caf9;
+    --theme-title: #1565c0;
+    --theme-secondary: #f0f9ff;
+    /* Ultra Soft Mavi */
+}
+
+/* 4. LILAC */
+body.theme-lilac {
+    --theme-bg: #f3e5f5;
+    --theme-surface: #fbf5fc;
+    --theme-text: #4a148c;
+    --theme-border: #ce93d8;
+    --theme-accent: #e1bee7;
+    --theme-accent-hover: #ce93d8;
+    --theme-title: #7b1fa2;
+    --theme-secondary: #faf5ff;
+    /* Ultra Soft Mor */
+}
+
+/* =========================================
+   YAMALAR (SOL MENÜ & OKUNABİLİRLİK DÜZELTMESİ)
+   ========================================= */
+
+/* 1. Adım: Tüm temalar için seçili kutunun arka planını boya */
+.conversation.selected {
+    background-color: var(--theme-accent) !important;
+}
+
+/* 2. Adım: KOYU temalarda yazı KOYU olmalı (Polar, Paper vb.) */
+/* Not: Bunların accent rengi açık olduğu için koyu yazı iyidir */
+body.theme-polar .conversation.selected *,
+body.theme-paper .conversation.selected *,
+body.theme-sunset .conversation.selected * {
+    color: #222 !important;
+    font-weight: 600 !important;
+}
+
+/* 3. Adım: AÇIK RENK VURGUSU OLAN TEMALAR (2077, Pastel, Obsidian) */
+/* Hem yazıyı SİYAH yapıyoruz hem de arkadaki BEYAZ ŞERİDİ siliyoruz */
+
+body.theme-mint .conversation.selected *,
+body.theme-sakura .conversation.selected *,
+body.theme-sky .conversation.selected *,
+body.theme-lilac .conversation.selected *,
+body.theme-amber .conversation.selected *,
+body.theme-nord .conversation.selected *,
+body.theme-obsidian .conversation.selected *,
+body.theme-coffee .conversation.selected *,
+body.theme-2077 .conversation.selected *
+
+/* <--- BURAYA EKLENDİ (SARI ÜSTÜNE SİYAH) */
+    {
+    color: #000000 !important;
+    font-weight: 700 !important;
+    background-color: transparent !important;
+}

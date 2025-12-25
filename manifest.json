@@ -1,0 +1,47 @@
+{
+    "manifest_version": 3,
+    "name": "Refined for Gemini: Themes & PDF Export",
+    "short_name": "Refined",
+    "version": "1.1",
+    "description": "Customize Google Gemini with dark themes, distinct fonts, and export chats to PDF.",
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "refined-for-gemini@yusufcodes.com",
+            "strict_min_version": "109.0"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://gemini.google.com/*"
+            ],
+            "css": [
+                "themes.css",
+                "styles.css",
+                "settings.css"
+            ],
+            "js": [
+                "modules/theme.js",
+                "modules/pdf.js",
+                "modules/ui.js",
+                "content.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "icons/*.png",
+                "images/*.webp"
+            ],
+            "matches": [
+                "https://gemini.google.com/*"
+            ]
+        }
+    ]
+}

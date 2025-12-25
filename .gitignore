@@ -1,0 +1,16 @@
+# Mac/Windows sistem dosyalari
+.DS_Store
+Thumbs.db
+
+# Guvenlik (Bunu sakin silme, key dosyan gizli kalmali!)
+*.pem
+*.ppk
+key.pem
+
+# Build dosyalari (Zipleri yuklemeye gerek yok)
+*.zip
+*.crx
+
+# Loglar ve gecici dosyalar
+*.log
+.vscode/

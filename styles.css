@@ -1,0 +1,476 @@
+/* styles.css - GÖRÜNÜM AYARLARI */
+
+/* 1. GÖRSEL TEMİZLİK */
+.input-gradient,
+.blur-bg,
+.gradient-container,
+.top-gradient,
+.bottom-gradient {
+    display: none !important;
+}
+
+.input-area-container.is-zero-state,
+.input-area-container {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* 2. RENK DEĞİŞKENİ EŞLEŞTİRMELERİ */
+:root,
+:host,
+body,
+* {
+    --bard-color-synthetic--chat-window-surface: transparent !important;
+    --bard-color-surface-dim-tmp: transparent !important;
+    --gem-sys-color--surface: var(--theme-bg) !important;
+    --mat-app-background-color: var(--theme-bg) !important;
+    --gem-sys-color--surface-container: var(--theme-surface) !important;
+    --gem-sys-color--surface-container-high: var(--theme-surface) !important;
+    --gem-sys-color--surface-container-low: var(--theme-surface) !important;
+}
+
+/* 3. GENEL ARAYÜZ */
+html,
+body {
+    background-color: var(--theme-bg) !important;
+    color: var(--theme-text) !important;
+}
+
+/* Yazı Kutusu */
+.input-area,
+.text-input-field,
+.input-area-container {
+    background-color: var(--theme-surface) !important;
+    color: var(--theme-text) !important;
+    border-radius: 32px !important;
+    border-color: var(--theme-border) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Metinler */
+input,
+textarea,
+p,
+span,
+div,
+li,
+a {
+    color: var(--theme-text) !important;
+}
+
+h1,
+h2,
+h3,
+.greeting-title {
+    color: var(--theme-title) !important;
+}
+
+/* 4. KULLANICI BALONCUĞU (KRİTİK DÜZELTME) */
+/* Senin kodunda burası accent idi, secondary yaptık ki PASTEL olsun */
+.user-query-bubble-with-background,
+.user-query-container .user-query-message,
+[data-test-id="user-query-item"] {
+    background-color: var(--theme-secondary) !important;
+    color: var(--theme-text) !important;
+    border-radius: 18px !important;
+    font-weight: 500 !important;
+}
+
+.user-query-bubble-with-background p {
+    color: inherit !important;
+}
+
+/* Sol Menü */
+bard-sidenav {
+    background-color: var(--theme-surface) !important;
+    border-right: 1px solid var(--theme-border) !important;
+}
+
+/* İkonlar */
+svg,
+path,
+mat-icon {
+    fill: var(--theme-text) !important;
+    color: var(--theme-text) !important;
+}
+
+/* 5. BUTONLAR VE KARTLAR */
+.card,
+.card-zero-state,
+intent-card button,
+.suggestion-chip-container button {
+    background-color: var(--theme-surface) !important;
+    border-color: var(--theme-border) !important;
+    color: var(--theme-text) !important;
+    box-shadow: none !important;
+    border-radius: 12px !important;
+}
+
+.card-label {
+    color: var(--theme-text) !important;
+}
+
+.card:hover,
+.card-zero-state:hover,
+intent-card button:hover {
+    background-color: var(--theme-border) !important;
+    cursor: pointer !important;
+}
+
+/* 6. CONTAINER TEMİZLİĞİ (Beyazlıkları Siler) */
+.input-area-container,
+.chat-input-container,
+.main-footer,
+.footer-container,
+.mat-mdc-form-field-flex,
+.mat-mdc-text-field-wrapper {
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.input-area,
+.text-input-field {
+    overflow: hidden !important;
+}
+
+/* 7. PRO / UPGRADE BUTONU (Senin sevdiğin ayar) */
+upsell-button button,
+[data-test-id="bard-upsell-menu-button"],
+.gds-upsell-button {
+    background: var(--theme-surface) !important;
+    background-color: var(--theme-surface) !important;
+    background-image: none !important;
+    border: 1px solid var(--theme-border) !important;
+    color: var(--theme-text) !important;
+    box-shadow: none !important;
+}
+
+upsell-button span,
+.gds-upsell-button span {
+    color: var(--theme-text) !important;
+    -webkit-text-fill-color: var(--theme-text) !important;
+}
+
+upsell-button button:hover,
+[data-test-id="bard-upsell-menu-button"]:hover,
+.gds-upsell-button:hover {
+    background-color: var(--theme-accent) !important;
+    border-color: var(--theme-accent) !important;
+    box-shadow: 0 0 15px var(--theme-accent) !important;
+}
+
+upsell-button button:hover span,
+.gds-upsell-button:hover span {
+    color: var(--theme-bg) !important;
+    -webkit-text-fill-color: var(--theme-bg) !important;
+}
+
+/* 8. PRO ROZETİ */
+.gds-pillbox-button,
+.pillbox-btn,
+div[data-test-id="pillbox"] button {
+    background: var(--theme-surface) !important;
+    background-color: var(--theme-surface) !important;
+    background-image: none !important;
+    border: 1px solid var(--theme-border) !important;
+    color: var(--theme-text) !important;
+    opacity: 1 !important;
+    filter: none !important;
+    box-shadow: none !important;
+}
+
+.gds-pillbox-button span,
+.pillbox-btn span {
+    color: var(--theme-accent) !important;
+    -webkit-text-fill-color: var(--theme-accent) !important;
+    font-weight: 700 !important;
+}
+
+/* 9. KOD BLOKLARI (Temiz Görünüm) */
+code,
+pre {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    color: #e0e0e0 !important;
+    border: 1px solid var(--theme-border);
+}
+
+/* Açık renk temalar için aydınlatma */
+body[class*="theme-mint"] code,
+body[class*="theme-mint"] pre,
+body[class*="theme-sakura"] code,
+body[class*="theme-sakura"] pre,
+body[class*="theme-sky"] code,
+body[class*="theme-sky"] pre,
+body[class*="theme-lilac"] code,
+body[class*="theme-lilac"] pre,
+body[class*="theme-polar"] code,
+body[class*="theme-polar"] pre,
+body[class*="theme-paper"] code,
+body[class*="theme-paper"] pre {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    color: #333 !important;
+    border: 1px solid var(--theme-accent);
+}
+
+/* =================================================================
+   7. BUTONLAR VE LİNKLER (AYRIŞTIRILMIŞ FİNAL ÇÖZÜM - ORTALI)
+   ================================================================= */
+
+/* --- GRUP A: DİKDÖRTGEN BUTONLAR (Save PDF & Buy Coffee) --- */
+#midnight-pdf-btn,
+#midnight-coffee-btn {
+    /* Yerleşim Ayarı (KRİTİK KISIM) */
+    flex: 1 !important;
+    /* Mevcut alanı eşit paylaşsınlar */
+    width: 100% !important;
+    /* Genişliği zorla */
+
+    /* Temel Ayarlar */
+    background-color: var(--theme-surface) !important;
+    color: var(--theme-text) !important;
+    border: 1px solid var(--theme-border) !important;
+
+    /* Şekil (Dikdörtgen) */
+    border-radius: 8px !important;
+    padding: 8px 16px !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+
+    /* İçerik Düzeni */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    /* Yazı ve ikonu tam ortala */
+    gap: 8px !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease-in-out !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* --- GRUP B: AYARLAR BUTONU (Küçük Kare Dişli Çark) --- */
+#midnight-settings-btn {
+    width: 42px !important;
+    height: 42px !important;
+    padding: 0 !important;
+
+    background-color: var(--theme-surface) !important;
+    border: 1px solid var(--theme-border) !important;
+    color: var(--theme-text) !important;
+
+    border-radius: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    transition: all 0.2s ease !important;
+
+    position: fixed;
+    top: 75px;
+    right: 15px;
+    z-index: 9999;
+}
+
+/* --- C. SIKINTILI KOYU TEMALARDA OKUNABİLİRLİK (High Contrast) --- */
+body.theme-dracula #midnight-pdf-btn,
+body.theme-dracula #midnight-coffee-btn,
+body.theme-forest #midnight-pdf-btn,
+body.theme-forest #midnight-coffee-btn,
+body.theme-nebula #midnight-pdf-btn,
+body.theme-nebula #midnight-coffee-btn,
+body.theme-obsidian #midnight-pdf-btn,
+body.theme-obsidian #midnight-coffee-btn,
+body.theme-coffee #midnight-pdf-btn,
+body.theme-coffee #midnight-coffee-btn,
+body.theme-crimson #midnight-pdf-btn,
+body.theme-crimson #midnight-coffee-btn,
+body.theme-2077 #midnight-pdf-btn,
+body.theme-2077 #midnight-coffee-btn,
+body.theme-nord #midnight-pdf-btn,
+body.theme-nord #midnight-coffee-btn,
+body.theme-amber #midnight-pdf-btn,
+body.theme-amber #midnight-coffee-btn,
+body.theme-bloom #midnight-pdf-btn,
+body.theme-bloom #midnight-coffee-btn {
+    background-color: var(--theme-accent) !important;
+    color: var(--theme-bg) !important;
+    border-color: var(--theme-accent) !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Ayarlar butonu ikon rengi */
+body.theme-dracula #midnight-settings-btn,
+body.theme-forest #midnight-settings-btn,
+body.theme-nebula #midnight-settings-btn,
+body.theme-obsidian #midnight-settings-btn,
+body.theme-coffee #midnight-settings-btn,
+body.theme-crimson #midnight-settings-btn,
+body.theme-2077 #midnight-settings-btn,
+body.theme-nord #midnight-settings-btn,
+body.theme-amber #midnight-settings-btn,
+body.theme-bloom #midnight-settings-btn {
+    color: var(--theme-accent) !important;
+    border-color: var(--theme-accent) !important;
+}
+
+/* --- D. HOVER EFEKTLERİ --- */
+#midnight-pdf-btn:hover,
+#midnight-coffee-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+
+#midnight-settings-btn:hover {
+    background-color: var(--theme-accent) !important;
+    color: var(--theme-bg) !important;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--theme-accent) !important;
+}
+
+/* Pastel Temalar İçin Özel Yama */
+body[class*="theme-mint"] #midnight-pdf-btn:hover,
+body[class*="theme-mint"] #midnight-coffee-btn:hover,
+body[class*="theme-sakura"] #midnight-pdf-btn:hover,
+body[class*="theme-sakura"] #midnight-coffee-btn:hover,
+body[class*="theme-sky"] #midnight-pdf-btn:hover,
+body[class*="theme-sky"] #midnight-coffee-btn:hover,
+body[class*="theme-lilac"] #midnight-pdf-btn:hover,
+body[class*="theme-lilac"] #midnight-coffee-btn:hover {
+    background-color: var(--theme-accent) !important;
+    color: #000 !important;
+}
+
+/* İkon Renkleri */
+#midnight-pdf-btn svg,
+#midnight-coffee-btn svg,
+#midnight-settings-btn svg {
+    fill: currentColor !important;
+    color: currentColor !important;
+}
+
+
+/* =================================================================
+   V1.1 GÜNCELLEMESİ - DETAY DÜZELTMELERİ (Tooltip, Canvas, Login)
+   ================================================================= */
+
+/* --- 1. TOOLTIP (İPUCU BALONCUKLARI) DÜZELTMESİ --- */
+/* Google Angular Material kullanıyor, overlay container dışarıda oluşur */
+.cdk-overlay-container .mat-mdc-tooltip-surface,
+.cdk-overlay-container .mdc-tooltip__surface {
+    background-color: var(--theme-surface) !important;
+    color: var(--theme-text) !important;
+    border: 1px solid var(--theme-border) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Tooltip içindeki yazılar */
+.cdk-overlay-container span,
+.cdk-overlay-container div {
+    color: var(--theme-text) !important;
+}
+
+/* --- 2. GİRİŞ YAPILMAMIŞ EKRAN (GREETING) --- */
+/* "Kişisel yapay zeka asistanınız" yazısı */
+.aurora-greeting-container .signed-out-greeting,
+.aurora-greeting-container h1,
+.aurora-greeting-container h2 {
+    color: var(--theme-text) !important;
+    background: transparent !important;
+    -webkit-text-fill-color: var(--theme-text) !important;
+    /* Gradienti ezmek için */
+}
+
+/* --- 3. OTURUM AÇ BUTONU (GİRİŞ EKRANI) --- */
+a.gb_Va,
+.gb_ce {
+    color: var(--theme-text) !important;
+    text-decoration: none !important;
+}
+
+a.gb_Va {
+    background-color: var(--theme-surface) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: 4px !important;
+    padding: 5px 15px !important;
+    transition: all 0.2s ease !important;
+}
+
+a.gb_Va:hover {
+    background-color: var(--theme-accent) !important;
+    border-color: var(--theme-accent) !important;
+}
+
+a.gb_Va:hover .gb_ce {
+    color: var(--theme-bg) !important;
+    /* Hover olunca yazı koyu olsun */
+}
+
+/* --- 4. CANVAS (IMMERSIVE MODE) DÜZELTMELERİ --- */
+
+/* 4.1. "Aç" Butonu (Immersive Entry Chip) */
+immersive-entry-chip button,
+immersive-entry-chip .mdc-button {
+    background-color: var(--theme-accent) !important;
+    color: var(--theme-bg) !important;
+    /* Buton içi yazı kontrast olsun */
+}
+
+/* 4.2. Canvas Kartı Arka Planı ve Hover Durumu */
+immersive-entry-chip .container,
+immersive-entry-chip .default-entry-chip-content {
+    background-color: var(--theme-surface) !important;
+    color: var(--theme-text) !important;
+    border: 1px solid var(--theme-border) !important;
+}
+
+/* Canvas kartındaki başlıklar ve tarihler */
+immersive-entry-chip .gds-title-m,
+immersive-entry-chip .gds-body-m,
+immersive-entry-chip .text {
+    color: var(--theme-text) !important;
+}
+
+/* İkonlar */
+immersive-entry-chip mat-icon,
+immersive-entry-chip .mat-icon {
+    color: var(--theme-text) !important;
+}
+
+/* 4.3. Canvas Paneli (Kod Yazılan Büyük Alan) */
+immersive-panel,
+code-immersive-panel,
+immersive-panel .toolbar {
+    background-color: var(--theme-bg) !important;
+    color: var(--theme-text) !important;
+    border-color: var(--theme-border) !important;
+}
+
+/* Canvas Toolbar Başlığı */
+immersive-panel .title-text {
+    color: var(--theme-text) !important;
+}
+
+/* 4.4. Sol Menüdeki Canvas Geçmiş Öğeleri (Library Items) */
+library-item-card .library-item-card {
+    background-color: var(--theme-surface) !important;
+    color: var(--theme-text) !important;
+    border: 1px solid var(--theme-border) !important;
+}
+
+library-item-card .title {
+    color: var(--theme-text) !important;
+}
+
+library-item-card mat-icon {
+    color: var(--theme-text) !important;
+    opacity: 0.7;
+}
+
+/* Koyu temalarda Canvas editörünün kenarları */
+.xap-monaco-container,
+.monaco-editor-background {
+    background-color: var(--theme-bg) !important;
+}

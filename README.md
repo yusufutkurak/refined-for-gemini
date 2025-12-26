@@ -11,6 +11,7 @@ A powerful browser extension that enhances your Google Gemini experience with cu
 * **📄 PDF Export:** Save your chats as clean, formatted PDF documents with a single click.
 * **👁️ Better Readability:** Improved fonts and contrast for long reading sessions.
 * **🐈 Companions (Coming Soon):** Interactive screen pets!
+<img width="1400" height="560" alt="Frame 2 (3)" src="https://github.com/user-attachments/assets/0715edf6-bdef-4167-855f-c0ba41552d5d" />
 
 ## 📥 Installation
 

@@ -1,8 +1,6 @@
-/* settings.css - Ayarlar Arayüzü ve Tema Kataloğu */
+/* settings.css - TAM SÜRÜM (v3.0) */
 
-/* =================================================================
-   1. AYARLAR BUTONU (Profil Resminin Altında)
-   ================================================================= */
+/* --- 1. AYARLAR BUTONU (Dişli Çark) --- */
 #midnight-settings-btn {
     display: flex;
     align-items: center;
@@ -10,64 +8,45 @@
     width: 42px;
     height: 42px;
     border-radius: 12px;
-
-    /* Tema değişkenlerini kullanıyoruz */
     background-color: var(--theme-surface);
     border: 1px solid var(--theme-border);
     color: var(--theme-text);
-
     cursor: pointer;
     transition: all 0.2s ease;
-
-    /* KONUMLANDIRMA: Sağ Üst (Profilin Altı) */
     position: fixed;
     top: 75px;
     right: 15px;
     z-index: 9999;
-
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 #midnight-settings-btn:hover {
     background-color: var(--theme-accent);
     color: var(--theme-bg);
-    /* Yazı rengi arka planla zıt olsun */
     transform: scale(1.05);
     box-shadow: 0 0 15px var(--theme-accent);
 }
 
-/* =================================================================
-   2. AYARLAR PENCERESİ (MODAL)
-   ================================================================= */
+/* --- 2. MODAL PENCERESİ --- */
 #midnight-settings-modal {
     display: none;
     position: fixed;
-
-    /* KONUMLANDIRMA GÜNCELLEMESİ: Butonun Altı */
-    /* Buton Top(75) + Height(42) + Boşluk(8) = 125px */
     top: 125px;
     right: 15px;
-    /* Butonla aynı hizaya (Sağa yaslı) */
-
-    width: 320px;
+    width: 340px;
     height: auto;
-
     background-color: var(--theme-surface);
     border: 1px solid var(--theme-border);
     border-radius: 16px;
-
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(12px);
-
     z-index: 10000;
-    padding: 20px;
+    padding: 0;
     color: var(--theme-text);
     font-family: 'Google Sans', sans-serif;
-
-    /* Açılış animasyonunu yukarıdan aşağı kayacak şekilde güncelledim */
     animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     transform-origin: top right;
-    /* Animasyon sağ üstten başlasın */
+    overflow: hidden;
 }
 
 @keyframes slideDown {
@@ -82,152 +61,301 @@
     }
 }
 
-/* Modal Başlığı */
-.midnight-header {
+/* --- 3. HEADER & TABS --- */
+.midnight-header-wrapper {
+    background-color: var(--theme-bg);
+    padding: 15px 20px 0 20px;
+    border-bottom: 1px solid var(--theme-border);
+}
+
+.midnight-top-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--theme-border);
-    padding-bottom: 12px;
     margin-bottom: 15px;
 }
 
-.midnight-header h2 {
+.midnight-top-row h2 {
     margin: 0;
     font-size: 16px;
     font-weight: 600;
     color: var(--theme-title);
 }
 
-/* Kapatma Butonu (X) */
 #midnight-close-btn {
     background: transparent;
     border: none;
     color: var(--theme-text);
     font-size: 20px;
     cursor: pointer;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+    padding: 0;
+    opacity: 0.7;
 }
 
 #midnight-close-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
     color: #ef4444;
+    opacity: 1;
 }
 
-/* =================================================================
-   3. TEMA KATALOĞU (GRID YAPISI)
-   ================================================================= */
-.midnight-body {
+.midnight-tabs {
     display: flex;
-    flex-direction: column;
+    gap: 20px;
 }
 
+.midnight-tab-btn {
+    background: none;
+    border: none;
+    color: var(--theme-text);
+    opacity: 0.6;
+    font-size: 14px;
+    font-weight: 500;
+    padding-bottom: 10px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.midnight-tab-btn:hover {
+    opacity: 1;
+}
+
+.midnight-tab-btn.active {
+    opacity: 1;
+    color: var(--theme-accent);
+    font-weight: 600;
+}
+
+.midnight-tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--theme-accent);
+    border-radius: 2px 2px 0 0;
+}
+
+/* --- 4. İÇERİK ALANI --- */
+.midnight-content-area {
+    padding: 15px;
+    min-height: 250px;
+}
+
+.midnight-tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.midnight-tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TEMA IZGARASI */
 .midnight-theme-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* İkili kolon */
     gap: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 5px;
 }
 
-/* Tema Kartı */
+/* Scrollbar Tasarımı */
+.midnight-theme-grid::-webkit-scrollbar {
+    width: 6px;
+}
+
+.midnight-theme-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.midnight-theme-grid::-webkit-scrollbar-thumb {
+    background-color: var(--theme-border);
+    border-radius: 4px;
+}
+
 .theme-card {
     background-color: var(--theme-surface);
     border: 2px solid var(--theme-border);
     border-radius: 12px;
-    padding: 10px;
+    padding: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    position: relative;
-    overflow: hidden;
 }
 
 .theme-card:hover {
-    background-color: rgba(255, 255, 255, 0.05);
     transform: translateY(-2px);
+    border-color: var(--theme-text);
 }
 
-/* Seçili Tema (Parlayan Kenarlık) */
 .theme-card.active {
     border-color: var(--theme-accent);
-    box-shadow: 0 0 10px var(--theme-accent);
+    box-shadow: 0 0 8px var(--theme-accent);
 }
 
 .theme-preview {
     width: 100%;
     height: 60px;
-    /* Yükseklik sabit kalsın */
-    border-radius: 8px;
-    background: var(--theme-bg);
-    /* Resim yüklenmezse zemin rengi görünsün */
-
-    /* --- YENİ EKLENENLER --- */
     object-fit: cover;
-    /* Resmi kutuya sığdır, taşanları kes, sündürme */
+    border-radius: 8px;
     border: 1px solid var(--theme-border);
-    /* Çerçeve ekle */
+    margin-bottom: 5px;
     display: block;
-    /* Resimlerin altında boşluk kalmasın diye */
 }
 
 .theme-name {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
-    color: var(--theme-text);
     text-align: center;
+    color: var(--theme-text);
 }
 
-/* ... Önceki Modal kodlarının devamı ... */
-
-/* 1. KART LİSTESİ IZGARASI (Scroll Özelliği Eklendi) */
-.midnight-theme-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* Yan yana 2 kutu */
-    gap: 12px;
-    padding: 5px;
-    /* Kenarlardan biraz boşluk */
-
-    /* --- KRİTİK KISIM: SCROLL AYARLARI --- */
-    max-height: 380px;
-    /* Maksimum yükseklik (Yaklaşık 3-4 satır gösterir) */
-    overflow-y: auto;
-    /* İçerik taşarsa dikey kaydırma çubuğu çıkar */
-    overflow-x: hidden;
-    /* Yatay kaydırmayı engelle */
+/* --- ATMOSFER --- */
+.atmosphere-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--theme-border);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
 }
 
-/* 2. KAYDIRMA ÇUBUĞU TASARIMI (Scrollbar Styling) */
-/* Webkit tarayıcılar (Chrome, Edge, Safari) için özelleştirme */
-
-/* Çubuğun genişliği */
-.midnight-theme-grid::-webkit-scrollbar {
-    width: 6px;
+.atmosphere-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* Çubuğun arkasındaki yol (Track) */
-.midnight-theme-grid::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    /* Çok hafif şeffaf zemin */
-    border-radius: 4px;
+.atmosphere-icon {
+    font-size: 20px;
 }
 
-/* Hareket eden çubuk (Thumb) */
-.midnight-theme-grid::-webkit-scrollbar-thumb {
+.atmosphere-name {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* SWITCH (ANAHTAR) */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--theme-border);
+    border-radius: 34px;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--theme-text);
+    border-radius: 50%;
+    transition: .4s;
+}
+
+input:checked+.slider {
     background-color: var(--theme-accent);
-    /* Seçili temanın rengini alır! */
-    border-radius: 4px;
-    opacity: 0.8;
 }
 
-/* Çubuğun üzerine gelince */
-.midnight-theme-grid::-webkit-scrollbar-thumb:hover {
-    background-color: var(--theme-accent-hover);
+input:checked+.slider:before {
+    transform: translateX(20px);
+    background-color: var(--theme-bg);
+}
+
+/* --- 5. FOOTER --- */
+.midnight-footer {
+    padding: 15px;
+    border-top: 1px solid var(--theme-border);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--theme-bg);
+}
+
+.midnight-btn-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+#midnight-pdf-btn,
+#midnight-coffee-btn {
+    flex: 1;
+    background-color: var(--theme-surface);
+    color: var(--theme-text);
+    border: 1px solid var(--theme-border);
+    border-radius: 8px;
+    padding: 8px;
+    font-weight: 600;
+    font-size: 12px;
+    /* Yazı uzadığı için fontu 1 tık küçülttüm */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.2s;
+    white-space: nowrap;
+    /* Yazının alt satıra geçmesini engelle */
+}
+
+#midnight-pdf-btn:hover,
+#midnight-coffee-btn:hover {
+    background-color: var(--theme-accent);
+    color: var(--theme-bg);
+    border-color: var(--theme-accent);
+}
+
+/* --- İKON DÜZELTMELERİ (HOTFIX) --- */
+/* Ayarlar butonu çizgiseli olduğu için içi BOŞ olmalı */
+#midnight-settings-btn svg {
+    fill: none !important;
+    stroke: currentColor !important;
+    stroke-width: 2px !important;
+    width: 24px !important;
+    height: 24px !important;
+}
+
+/* Diğer buton ikonları da çizgisel kalsın */
+#midnight-pdf-btn svg,
+#midnight-coffee-btn svg {
+    fill: none !important;
+    stroke: currentColor !important;
+    stroke-width: 2px !important;
 }

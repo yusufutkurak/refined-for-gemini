@@ -271,3 +271,22 @@ body.theme-2077 .conversation.selected *
     font-weight: 700 !important;
     background-color: transparent !important;
 }
+
+/* --- HAVA DURUMU RENK AYARLARI --- */
+
+/* 1. Varsayılan (Koyu Temalar İçin): BEYAZ KAR */
+:root {
+    --snow-color: rgba(255, 255, 255, 0.6);
+}
+
+/* 2. Açık Temalar İçin: KOYU (GRİ/MAVİ) KAR */
+/* Polar, Paper, Sky, Mint, Sakura, Lilac temalarında kar görünür olsun */
+body.theme-polar,
+body.theme-paper,
+body.theme-sky,
+body.theme-mint,
+body.theme-sakura,
+body.theme-lilac {
+    /* Hafif şeffaf Slate Grisi - Buz gibi görünür */
+    --snow-color: rgba(71, 85, 105, 0.5);
+}

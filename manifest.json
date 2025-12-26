@@ -23,12 +23,17 @@
             "css": [
                 "themes.css",
                 "styles.css",
-                "settings.css"
+                "settings.css",
+                "atmosphere.css"
             ],
             "js": [
                 "modules/theme.js",
                 "modules/pdf.js",
                 "modules/ui.js",
+                "modules/atmospheres/snow.js",
+                "modules/atmospheres/rain.js",
+                "modules/atmospheres/firefly.js",
+                "modules/atmospheres/manager.js",
                 "content.js"
             ]
         }

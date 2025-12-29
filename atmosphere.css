@@ -1,29 +1,27 @@
-/* atmosphere.css - Hava Durumu Animasyonları ve Renkleri */
+/* atmosphere.css - FINAL FIXED VERSION (ORİJİNAL GÖRÜNÜM) */
 
 /* --- 1. RENK TANIMLAMALARI --- */
 :root {
-    /* Varsayılan: Beyaz Kar, Açık Yağmur, Altın Ateş Böceği */
     --snow-color: rgba(255, 255, 255, 0.6);
     --rain-color: rgba(174, 194, 224, 0.5);
     --firefly-color: #ffd700;
     --firefly-glow: rgba(255, 215, 0, 0.6);
+    --sakura-color: #ffb7b2;
 }
 
 /* AÇIK RENK TEMALAR İÇİN KOYU EFEKTLER */
-/* Polar, Paper, Sky, Mint, Sakura, Lilac temalarında kar görünür olsun */
 body.theme-polar,
 body.theme-paper,
 body.theme-sky,
 body.theme-mint,
 body.theme-sakura,
 body.theme-lilac {
-    --snow-color: rgba(71, 85, 105, 0.5);
+    --snow-color: rgba(44, 62, 80, 0.5);
     /* Koyu Gri Kar */
     --rain-color: rgba(51, 65, 85, 0.6);
-    /* Koyu Mavi Yağmur */
     --firefly-color: #f59e0b;
-    /* Koyu Turuncu Ateş Böceği */
     --firefly-glow: rgba(245, 158, 11, 0.4);
+    --sakura-color: #e91e63;
 }
 
 /* --- 2. GENEL CONTAINER YAPISI --- */
@@ -35,19 +33,33 @@ body.theme-lilac {
     height: 100vh;
     pointer-events: none;
     z-index: 0;
-    /* En arkada */
+    /* Yazıların arkasında, arka planın önünde */
     overflow: hidden;
 }
+
+
 
 /* --- 3. KAR (SNOW) --- */
 .midnight-snowflake {
     position: absolute;
     top: -50px;
+
+    /* İŞTE SIR BURADA: Yukarıdan aşağıya şeffaftan kara doğru geçiş */
+    /* Bu sayede 'Motion Blur' yemiş gibi görünür */
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--snow-color));
-    border-radius: 2px;
+
+    /* Kenarları çok hafif yumuşatalım */
+    border-radius: 4px;
+
     will-change: transform;
+    pointer-events: none;
+
+    /* Animasyon ismini JS veriyor ama varsayılan ayarlar burada */
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
 
+/* Yana Doğru Kayarak Yağma (Senin dosyadaki gentle-slope mantığı) */
 @keyframes midnight-gentle-slope {
     0% {
         transform: translate(0, 0) rotate(20deg);
@@ -59,7 +71,8 @@ body.theme-lilac {
     }
 
     100% {
-        transform: translate(-15vw, 110vh) rotate(20deg);
+        /* Sola doğru geniş bir kavisle in */
+        transform: translate(-15vw, 120vh) rotate(20deg);
         opacity: 0;
     }
 }
@@ -71,6 +84,9 @@ body.theme-lilac {
     width: 1px;
     background: linear-gradient(to bottom, transparent, var(--rain-color));
     will-change: transform;
+    animation-name: midnight-rain-fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
 
 @keyframes midnight-rain-fall {
@@ -100,6 +116,9 @@ body.theme-lilac {
     background-color: var(--firefly-color);
     box-shadow: 0 0 6px 1px var(--firefly-glow);
     will-change: transform, opacity;
+    animation-name: midnight-firefly-float;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
 }
 
 @keyframes midnight-firefly-float {
@@ -124,5 +143,131 @@ body.theme-lilac {
     100% {
         transform: translate(calc(var(--move-x) * -1), calc(var(--move-y) * -1)) scale(1);
         opacity: 0;
+    }
+}
+
+/* --- 6. SAKURA (KİRAZ ÇİÇEĞİ) --- */
+.midnight-petal {
+    position: absolute;
+    top: -50px;
+    background-color: var(--sakura-color);
+    border-radius: 100% 0 100% 0;
+    opacity: 0.8;
+    will-change: transform;
+    animation-name: midnight-sakura-fall, midnight-sakura-sway;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+}
+
+@keyframes midnight-sakura-fall {
+    0% {
+        top: -10%;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        top: 110%;
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes midnight-sakura-sway {
+
+    0%,
+    100% {
+        margin-left: 0px;
+    }
+
+    50% {
+        margin-left: 50px;
+    }
+}
+
+/* --- 7. MYSTIC FLAME (TAM EKRAN AURA) --- */
+:root {
+    --flame-core: #ff5500;
+    --flame-edge: #ffcc00;
+}
+
+body.theme-ocean,
+body.theme-sky,
+body.theme-polar,
+body.theme-nord,
+body.theme-2077 {
+    --flame-core: #0040ff;
+    --flame-edge: #00d9ff;
+}
+
+body.theme-cyberpunk,
+body.theme-nebula,
+body.theme-bloom,
+body.theme-lilac {
+    --flame-core: #6200ff;
+    --flame-edge: #d900ff;
+}
+
+body.theme-crimson,
+body.theme-coffee,
+body.theme-sunset,
+body.theme-amber,
+body.theme-paper {
+    --flame-core: #800000;
+    --flame-edge: #ff3c00;
+}
+
+body.theme-forest,
+body.theme-mint,
+body.theme-matrix {
+    --flame-core: #004d00;
+    --flame-edge: #00ff40;
+}
+
+#midnight-flame-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.midnight-fire-blob {
+    position: absolute;
+    background: radial-gradient(circle, var(--flame-edge) 0%, var(--flame-core) 60%, transparent 80%);
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.25;
+    mix-blend-mode: screen;
+    will-change: transform;
+    animation: midnight-aura-float linear infinite alternate;
+}
+
+body.theme-polar .midnight-fire-blob,
+body.theme-paper .midnight-fire-blob,
+body.theme-sky .midnight-fire-blob,
+body.theme-mint .midnight-fire-blob,
+body.theme-lilac .midnight-fire-blob {
+    mix-blend-mode: normal;
+    opacity: 0.15;
+    filter: blur(90px);
+}
+
+@keyframes midnight-aura-float {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    33% {
+        transform: translate(10vw, -10vh) scale(1.2) rotate(45deg);
+    }
+
+    66% {
+        transform: translate(-5vw, 15vh) scale(0.9) rotate(-20deg);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
     }
 }

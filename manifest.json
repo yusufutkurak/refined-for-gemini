@@ -2,8 +2,8 @@
     "manifest_version": 3,
     "name": "Refined for Gemini: Themes & PDF Export",
     "short_name": "Refined",
-    "version": "1.1",
-    "description": "Customize Google Gemini with dark themes, distinct fonts, and export chats to PDF.",
+    "version": "1.2",
+    "description": "The best Gemini Dark Theme & PDF Exporter. Customize Gemini with 20+ themes like Dracula, Matrix & Nord. Clean, Fast & Private.",
     "icons": {
         "16": "icons/icon16.png",
         "48": "icons/icon48.png",
@@ -24,16 +24,19 @@
                 "themes.css",
                 "styles.css",
                 "settings.css",
-                "atmosphere.css"
+                "atmosphere.css",
+                "gem.css"
             ],
             "js": [
                 "modules/theme.js",
                 "modules/pdf.js",
-                "modules/ui.js",
                 "modules/atmospheres/snow.js",
                 "modules/atmospheres/rain.js",
                 "modules/atmospheres/firefly.js",
+                "modules/atmospheres/sakura.js",
+                "modules/atmospheres/flame.js",
                 "modules/atmospheres/manager.js",
+                "modules/ui.js",
                 "content.js"
             ]
         }

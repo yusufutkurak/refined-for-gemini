@@ -1,5 +1,5 @@
 // modules/ui.js
-// v3.1 - Fixed Settings Icon & Updated Labels
+// v3.2 - Added Snow Settings (Density & Speed)
 
 window.Midnight = window.Midnight || {};
 
@@ -10,7 +10,6 @@ window.Midnight.UI = {
         // --- 1. AYARLAR BUTONU ---
         const btn = document.createElement('div');
         btn.id = 'midnight-settings-btn';
-        // DÜZELTME: Daha kısa ve sağlam bir SVG kodu kullanıldı (Material Outline Settings)
         btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>`;
         document.body.appendChild(btn);
 
@@ -35,6 +34,11 @@ window.Midnight.UI = {
         const isSnow = localStorage.getItem('weather-snow') === 'true' ? 'checked' : '';
         const isRain = localStorage.getItem('weather-rain') === 'true' ? 'checked' : '';
         const isFirefly = localStorage.getItem('weather-firefly') === 'true' ? 'checked' : '';
+        const isSakura = localStorage.getItem('weather-sakura') === 'true' ? 'checked' : '';
+
+        // Slider Değerleri (Yoksa varsayılan)
+        const snowDensity = localStorage.getItem('snow-density') || 200;
+        const snowSpeed = localStorage.getItem('snow-speed') || 1;
 
         // HTML Yapısı
         modal.innerHTML = `
@@ -55,10 +59,25 @@ window.Midnight.UI = {
                 </div>
 
                 <div id="tab-atmosphere" class="midnight-tab-content">
-                    <div class="atmosphere-item">
-                        <div class="atmosphere-info"><span class="atmosphere-icon">❄️</span><span class="atmosphere-name">Snow Effect</span></div>
-                        <label class="switch"><input type="checkbox" class="weather-toggle" data-effect="snow" ${isSnow}><span class="slider round"></span></label>
+                    
+                    <div class="atmosphere-group">
+                        <div class="atmosphere-item">
+                            <div class="atmosphere-info"><span class="atmosphere-icon">❄️</span><span class="atmosphere-name">Snow Effect</span></div>
+                            <label class="switch"><input type="checkbox" class="weather-toggle" data-effect="snow" ${isSnow}><span class="slider round"></span></label>
+                        </div>
+                        
+                        <div class="atmosphere-settings" id="snow-settings" style="display: ${isSnow === 'checked' ? 'block' : 'none'};">
+                            <div class="setting-row">
+                                <span class="setting-label">Density</span>
+                                <input type="range" id="snow-density-slider" min="50" max="500" step="50" value="${snowDensity}">
+                            </div>
+                            <div class="setting-row">
+                                <span class="setting-label">Speed</span>
+                                <input type="range" id="snow-speed-slider" min="0.5" max="3" step="0.5" value="${snowSpeed}">
+                            </div>
+                        </div>
                     </div>
+
                     <div class="atmosphere-item">
                         <div class="atmosphere-info"><span class="atmosphere-icon">🌧️</span><span class="atmosphere-name">Rain Effect</span></div>
                         <label class="switch"><input type="checkbox" class="weather-toggle" data-effect="rain" ${isRain}><span class="slider round"></span></label>
@@ -66,6 +85,16 @@ window.Midnight.UI = {
                     <div class="atmosphere-item">
                         <div class="atmosphere-info"><span class="atmosphere-icon">✨</span><span class="atmosphere-name">Fireflies</span></div>
                         <label class="switch"><input type="checkbox" class="weather-toggle" data-effect="firefly" ${isFirefly}><span class="slider round"></span></label>
+                    </div>
+                    <div class="atmosphere-item">
+                        <div class="atmosphere-info">
+                            <span class="atmosphere-icon">🌸</span>
+                            <span class="atmosphere-name">Sakura</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" class="weather-toggle" data-effect="sakura" ${isSakura}>
+                            <span class="slider round"></span>
+                        </label>
                     </div>
                 </div>
             </div>
@@ -107,8 +136,10 @@ window.Midnight.UI = {
             });
         });
 
-        // Modüler Hava Durumu Kontrolü (Manager)
+        // Modüler Hava Durumu Kontrolü (Manager) + Slider Gizleme Mantığı
         const weatherToggles = modal.querySelectorAll('.weather-toggle');
+        const snowSettings = document.getElementById('snow-settings');
+
         weatherToggles.forEach(toggle => {
             toggle.addEventListener('change', (e) => {
                 const currentEffect = e.target.getAttribute('data-effect');
@@ -121,14 +152,44 @@ window.Midnight.UI = {
                             const otherEffect = otherToggle.getAttribute('data-effect');
                             localStorage.setItem(`weather-${otherEffect}`, 'false');
                             window.Midnight.AtmosphereManager.toggle(otherEffect, false);
+
+                            // Eğer kapanan şey karsa, ayar menüsünü de gizle
+                            if (otherEffect === 'snow') {
+                                snowSettings.style.display = 'none';
+                            }
                         }
                     });
+                }
+
+                // Eğer açılan şey karsa, ayar menüsünü göster
+                if (currentEffect === 'snow') {
+                    snowSettings.style.display = isTurningOn ? 'block' : 'none';
                 }
 
                 localStorage.setItem(`weather-${currentEffect}`, isTurningOn);
                 window.Midnight.AtmosphereManager.toggle(currentEffect, isTurningOn);
             });
         });
+
+        // --- SNOW SLIDER LOGIC ---
+        const densitySlider = document.getElementById('snow-density-slider');
+        const speedSlider = document.getElementById('snow-speed-slider');
+
+        function updateSnow() {
+            localStorage.setItem('snow-density', densitySlider.value);
+            localStorage.setItem('snow-speed', speedSlider.value);
+
+            if (localStorage.getItem('weather-snow') === 'true') {
+                // Efekti anlık yenile (Sil ve tekrar oluştur)
+                window.Midnight.AtmosphereManager.toggle('snow', false);
+                setTimeout(() => {
+                    window.Midnight.AtmosphereManager.toggle('snow', true);
+                }, 10);
+            }
+        }
+
+        densitySlider.addEventListener('input', updateSnow);
+        speedSlider.addEventListener('input', updateSnow);
 
         // PDF
         document.getElementById('midnight-pdf-btn').addEventListener('click', () => {
@@ -142,7 +203,7 @@ window.Midnight.UI = {
         });
 
         // Başlangıç Kontrolü
-        const effects = ['snow', 'rain', 'firefly'];
+        const effects = ['snow', 'rain', 'firefly', 'sakura'];
         let activeFound = false;
 
         effects.reverse().forEach(effect => {

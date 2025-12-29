@@ -359,3 +359,129 @@ input:checked+.slider:before {
     stroke: currentColor !important;
     stroke-width: 2px !important;
 }
+
+/* =========================================
+   ATMOSPHERE SETTINGS (DÜZELTİLMİŞ & ORTALI)
+   ========================================= */
+
+/* 1. AYAR KUTUSU (Sub-Panel) */
+.atmosphere-settings {
+    /* Eski 'margin-left: 36px' SİLİNDİ. Artık tam genişlikte. */
+    width: 100%;
+    box-sizing: border-box;
+    /* Padding genişliği etkilemesin diye şart */
+
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--theme-border);
+    border-radius: 12px;
+
+    /* İç boşlukları artırdık, ferah durması için */
+    padding: 15px 20px;
+
+    /* Üstten biraz boşluk bırakalım ki toggle'a yapışmasın */
+    margin-top: 10px;
+    margin-bottom: 15px;
+
+    /* Açılış Animasyonu */
+    animation: slideDownFade 0.3s ease-out;
+    transform-origin: top;
+}
+
+@keyframes slideDownFade {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. SATIR DÜZENİ */
+.setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    /* Label ve Slider arası boşluk */
+    margin-bottom: 12px;
+}
+
+.setting-row:last-child {
+    margin-bottom: 0;
+}
+
+.setting-label {
+    font-size: 0.9rem;
+    /* Biraz daha okunaklı */
+    color: var(--theme-text);
+    opacity: 0.9;
+    font-weight: 500;
+    min-width: 70px;
+    /* Hizalama bozulmasın */
+}
+
+/* 3. SLIDER (INPUT RANGE) SIFIRLAMA */
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    /* Kapsayıcının geri kalanını doldur */
+    background: transparent;
+    height: 24px;
+    cursor: pointer;
+    margin: 0;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+/* 4. ÇUBUK (TRACK) TASARIMI */
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    /* Biraz daha kalın ve modern */
+    background: rgba(128, 128, 128, 0.2);
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+/* 5. TUTAMAÇ (THUMB) TASARIMI */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+
+    /* Rengi Temadan Al */
+    background: var(--theme-accent, #6366f1);
+
+    /* Ortalamak için matematik: (TrackHeight - ThumbHeight) / 2 */
+    /* (6px - 18px) / 2 = -6px */
+    margin-top: -6px;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    border: 3px solid var(--theme-bg, #fff);
+    /* Beyaz çerçeve modern durur */
+
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s;
+}
+
+/* 6. HOVER VE ACTIVE EFEKTLERİ */
+input[type=range]:hover::-webkit-slider-thumb {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+input[type=range]:active::-webkit-slider-thumb {
+    transform: scale(1.05);
+    background: var(--theme-text);
+    cursor: grabbing;
+}
+
+/* Koyu temada track rengi */
+body.dark-theme input[type=range]::-webkit-slider-runnable-track {
+    background: rgba(255, 255, 255, 0.15);
+}

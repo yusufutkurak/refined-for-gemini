@@ -1,0 +1,259 @@
+/* =================================================================
+   1. GERİ AL (UNDO) ve YENİDEN YAP (REDO) BUTONLARI
+   ================================================================= */
+
+/* Butonun genel rengi */
+.history-button {
+    /* Buton çerçevesi veya arka planı şeffaf kalsın, sadece ikon görünsün */
+    background-color: transparent !important;
+}
+
+/* İkonun Rengi (Normal Durum) */
+.history-button .mat-icon {
+    color: var(--theme-text) !important;
+    opacity: 0.8 !important;
+    /* Biraz parlak olsun */
+    transition: all 0.2s ease !important;
+}
+
+/* Disabled (Pasif/Tıklanamaz) Durum */
+/* Google burayı gri yapıyor, biz tema renginin silik halini yapıyoruz */
+.history-button:disabled .mat-icon,
+.history-button.mat-mdc-button-disabled .mat-icon {
+    color: var(--theme-text) !important;
+    opacity: 0.2 !important;
+    /* İyice silikleşsin ama kaybolmasın */
+}
+
+/* Hover (Üzerine Gelince) Durumu - Eğer aktifse */
+.history-button:not(:disabled):hover .mat-icon {
+    color: var(--theme-accent) !important;
+    /* Temanın vurgu rengiyle parlasın */
+    opacity: 1 !important;
+    transform: scale(1.1);
+    /* Hafif büyüsün */
+}
+
+
+/* =================================================================
+   2. SİHİRLİ KALEM (POWER UP) BUTONU
+   ================================================================= */
+
+/* Butonun Dış Çerçevesi */
+.power-up-button {
+    background-color: transparent !important;
+}
+
+/* Kalem İkonu (SVG İçindeki Path) */
+/* SVG'nin kendi dolgu rengini (fill) ezmemiz gerekiyor */
+.power-up-button .pen-animation-container svg path,
+.power-up-button svg path {
+    fill: var(--theme-accent) !important;
+    /* Kalem, tema renginde olsun (Örn: Mavi/Yeşil) */
+    fill-opacity: 1 !important;
+    transition: fill 0.3s ease !important;
+}
+
+/* Disabled (Pasif) Durum */
+.power-up-button:disabled .pen-animation-container svg path,
+.power-up-button.mat-mdc-button-disabled svg path {
+    fill: var(--theme-text) !important;
+    /* Pasifken düz yazı rengine dönsün */
+    opacity: 0.2 !important;
+    /* Ve silikleşsin */
+}
+
+/* Hover (Üzerine Gelince) - Aktifse */
+.power-up-button:not(:disabled):hover .pen-animation-container svg path {
+    filter: drop-shadow(0 0 5px var(--theme-accent));
+    /* Hafif neon parlama */
+    transform: scale(1.05);
+}
+
+/* =================================================================
+   TALİMATLAR KUTUSU - ARKA PLAN YAZISI (PLACEHOLDER) DÜZELTME
+   ================================================================= */
+
+/* 1. Yazının rengini ve görünürlüğünü ayarla */
+.instruction-bg.instruction-bg--has-placeholder::before {
+    /* Yazının içeriğini data-placeholder'dan almasını garantile (Eğer silinmişse) */
+    content: attr(data-placeholder) !important;
+
+    /* Rengi temanın ana yazı rengi yap (Zıtlık için) */
+    color: var(--theme-text) !important;
+
+    /* "Arka plan yazısı" olduğu için opaklığı düşür (Silikleştir) */
+    opacity: 0.4 !important;
+
+    /* Webkit tarayıcılar için dolgu rengi zorlaması */
+    -webkit-text-fill-color: var(--theme-text) !important;
+
+    /* Font ayarları (Orijinal yapıyı koru) */
+    font-weight: 400 !important;
+    pointer-events: none !important;
+    /* Tıklamayı engelle, arkaya geçsin */
+}
+
+/* 2. Alternatif: Eğer editörün kendi placeholder'ı görünüyorsa onu da eşitle */
+.ql-editor[data-placeholder]::before {
+    color: var(--theme-text) !important;
+    opacity: 0.4 !important;
+    -webkit-text-fill-color: var(--theme-text) !important;
+}
+
+/* =================================================================
+   INPUT (AD & AÇIKLAMA) KUTUSU DÜZELTMELERİ
+   ================================================================= */
+
+/* 1. "Siyah Film" Etkisini Kaldır */
+/* Input'un kendisini tamamen şeffaf yapıyoruz, böylece sadece alttaki kutu rengi görünür */
+#gem-name-input,
+.name-input,
+.description-input,
+input.mat-mdc-input-element,
+textarea.mat-mdc-input-element {
+    background-color: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    /* Varsa iç gölgeyi de sil */
+}
+
+/* 2. Placeholder (Silik Yazı) Rengini Düzelt */
+/* "Gem'inize bir ad verin" yazısını temaya uygun, zıt ve okunur yap */
+#gem-name-input::placeholder,
+.name-input::placeholder,
+.description-input::placeholder,
+input.mat-mdc-input-element::placeholder,
+textarea.mat-mdc-input-element::placeholder {
+
+    color: var(--theme-text) !important;
+    /* Temanın yazı rengini al */
+    opacity: 0.5 !important;
+    /* Yarı saydam yap (Silik görünsün) */
+
+    -webkit-text-fill-color: var(--theme-text) !important;
+    font-weight: 400 !important;
+}
+
+/* =================================================================
+   BOT LOGO VE İKONLARI (RENKLENDİRME - FİNAL)
+   ================================================================= */
+
+/* 1. GENEL AYAR (Tüm Temalar İçin) */
+bot-logo,
+.bot-logo-text {
+    /* Google'ın renklerini eziyoruz */
+    background-color: var(--theme-surface) !important;
+    /* Border satırlarını kaldırdım, senin ayarına dokunmuyorum */
+}
+
+/* 2. STANDART İKON RENGİ (Koyu Temalar İçin) */
+/* Coffee, Obsidian, Retro Amber vb. temalarda Accent rengi güzel parlar */
+bot-logo mat-icon,
+.bot-logo-text mat-icon {
+    color: var(--theme-accent) !important;
+    filter: drop-shadow(0 0 2px var(--theme-accent)) !important;
+}
+
+/* 3. İSTİSNA: AÇIK RENKLİ TEMALAR (Polar, Sky, Mint) */
+/* Bu temaların Accent rengi çok açık olduğu için görünmüyor. 
+   O yüzden daha koyu olan "Title" rengini kullanıyoruz. */
+
+body.theme-polar bot-logo mat-icon,
+body.theme-polar .bot-logo-text mat-icon,
+body.theme-sky bot-logo mat-icon,
+body.theme-sky .bot-logo-text mat-icon,
+body.theme-mint bot-logo mat-icon,
+body.theme-mint .bot-logo-text mat-icon {
+
+    /* Vurgu rengi yerine KOYU BAŞLIK rengini kullan */
+    color: var(--theme-title) !important;
+
+    /* Açık zeminde parlama (glow) bulanık durur, onu kapatalım */
+    filter: none !important;
+
+    /* İkonu biraz daha belirginleştirelim */
+    opacity: 0.9 !important;
+}
+
+/* =================================================================
+   SOL MENÜ GEM SEÇİMİ (MAVİ RENK DÜZELTME)
+   ================================================================= */
+
+/* 1. SEÇİLİ GEM BUTONU ARKAPLANI (Genel Kural) */
+/* "bot-list-item--selected" sınıfı, öğe seçilince Google tarafından ekleniyor */
+bot-list-item.bot-list-item--selected .bot-new-conversation-button {
+    background-color: var(--theme-accent) !important;
+    /* Mavi yerine Tema Rengi */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) !important;
+    /* Hafif gölge */
+    transition: background-color 0.2s ease !important;
+}
+
+/* =================================================================
+   YAZI VE İKON RENKLERİ (OKUNABİLİRLİK AYARI)
+   ================================================================= */
+
+/* --- GRUP A: PARLAK/AÇIK RENK TEMALAR -> YAZI SİYAH OLSUN --- */
+/* (Amber, Retro Amber, Coffee, Obsidian, 2077, Matrix, Mint, Lime, Sky, Polar, Paper) */
+
+body.theme-amber bot-list-item.bot-list-item--selected .bot-new-conversation-button,
+body.theme-retro-amber bot-list-item.bot-list-item--selected .bot-new-conversation-button,
+body.theme-coffee bot-list-item.bot-list-item--selected .bot-new-conversation-button,
+body.theme-obsidian bot-list-item.bot-list-item--selected .bot-new-conversation-button,
+body.theme-2077 bot-list-item.bot-list-item--selected .bot-new-conversation-button,
+body.theme-matrix bot-list-item.bot-list-item--selected .bot-new-conversation-button,
+body.theme-mint bot-list-item.bot-list-item--selected .bot-new-conversation-button,
+body.theme-lime bot-list-item.bot-list-item--selected .bot-new-conversation-button,
+body.theme-sky bot-list-item.bot-list-item--selected .bot-new-conversation-button,
+body.theme-polar bot-list-item.bot-list-item--selected .bot-new-conversation-button,
+body.theme-paper bot-list-item.bot-list-item--selected .bot-new-conversation-button {
+
+    color: #000000 !important;
+    /* Siyah Yazı */
+}
+
+/* İkonları ve Yazıyı hedefle */
+body.theme-retro-amber bot-list-item.bot-list-item--selected .bot-new-conversation-button .mat-icon,
+body.theme-retro-amber bot-list-item.bot-list-item--selected .bot-new-conversation-button .bot-name {
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+
+/* Diğer parlak temalar için genel ikon/yazı ayarı */
+body.theme-amber bot-list-item.bot-list-item--selected .bot-new-conversation-button *,
+body.theme-obsidian bot-list-item.bot-list-item--selected .bot-new-conversation-button *,
+body.theme-2077 bot-list-item.bot-list-item--selected .bot-new-conversation-button *,
+body.theme-mint bot-list-item.bot-list-item--selected .bot-new-conversation-button * {
+    color: #000000 !important;
+}
+
+
+/* --- GRUP B: KOYU/DOYGUN TEMALAR -> YAZI BEYAZ OLSUN --- */
+/* (Crimson, Ocean, Sunset, Nebula, Dracula, Forest) */
+
+body.theme-crimson bot-list-item.bot-list-item--selected .bot-new-conversation-button,
+body.theme-ocean bot-list-item.bot-list-item--selected .bot-new-conversation-button,
+body.theme-sunset bot-list-item.bot-list-item--selected .bot-new-conversation-button,
+body.theme-nebula bot-list-item.bot-list-item--selected .bot-new-conversation-button,
+body.theme-dracula bot-list-item.bot-list-item--selected .bot-new-conversation-button,
+body.theme-forest bot-list-item.bot-list-item--selected .bot-new-conversation-button {
+
+    color: #ffffff !important;
+    /* Beyaz Yazı */
+}
+
+/* İkonları ve Yazıyı hedefle */
+body.theme-crimson bot-list-item.bot-list-item--selected .bot-new-conversation-button *,
+body.theme-ocean bot-list-item.bot-list-item--selected .bot-new-conversation-button *,
+body.theme-sunset bot-list-item.bot-list-item--selected .bot-new-conversation-button * {
+    color: #ffffff !important;
+}
+
+/* --- EKSTRA: YANDAKİ 3 NOKTA MENÜSÜ --- */
+/* Seçili öğenin yanındaki menü butonu da okunur olsun */
+bot-list-item.bot-list-item--selected bot-actions-menu button {
+    color: inherit !important;
+    /* Ana butonun rengini miras al */
+    opacity: 0.8 !important;
+}

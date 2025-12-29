@@ -474,3 +474,92 @@ library-item-card mat-icon {
 .monaco-editor-background {
     background-color: var(--theme-bg) !important;
 }
+
+/* ============================================================
+   GEM OLUŞTURMA BUTONU (FİNAL TOPLU CSS - DOĞRU İSİMLERLE)
+   ============================================================ */
+
+/* 1. BUTONUN GENEL GÖRÜNÜMÜ */
+.create-btn-container .bot-creation-button {
+    background-color: var(--theme-accent) !important;
+    border-radius: 12px !important;
+    border: 1px solid transparent !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    transition: transform 0.2s ease, filter 0.2s ease !important;
+
+    /* Google değişkenlerini sıfırla */
+    --mdc-filled-button-container-color: var(--theme-accent) !important;
+}
+
+/* Hover Efekti (Genel) */
+.create-btn-container .bot-creation-button:hover {
+    transform: translateY(-2px) !important;
+    filter: brightness(1.1) !important;
+}
+
+
+/* ============================================================
+   GRUP A: PARLAK/AÇIK RENK BUTONLAR -> İÇERİK SİYAH OLSUN
+   (Amber, Obsidian, Coffee, 2077, Matrix, Mint, Lime, Sky, Polar, Paper)
+   ============================================================ */
+
+/* Bu temalar aktifken, butonun içindeki TÜM elemanları (Yazı, İkon, Span) SİYAH yap */
+body.theme-amber .create-btn-container .bot-creation-button *,
+body.theme-retro-amber .create-btn-container .bot-creation-button *,
+/* Ne olur ne olmaz kalsın */
+body.theme-obsidian .create-btn-container .bot-creation-button *,
+body.theme-coffee .create-btn-container .bot-creation-button *,
+body.theme-2077 .create-btn-container .bot-creation-button *,
+body.theme-matrix .create-btn-container .bot-creation-button *,
+body.theme-mint .create-btn-container .bot-creation-button *,
+body.theme-lime .create-btn-container .bot-creation-button *,
+body.theme-sky .create-btn-container .bot-creation-button *,
+body.theme-polar .create-btn-container .bot-creation-button *,
+body.theme-paper .create-btn-container .bot-creation-button * {
+
+    color: #000000 !important;
+    /* SİMSİYAH YAZI */
+    fill: #000000 !important;
+    /* SİMSİYAH İKON */
+
+    /* Google Material değişkenlerini siyaha zorla */
+    --mdc-filled-button-label-text-color: #000000 !important;
+    --mdc-text-button-label-text-color: #000000 !important;
+    --mat-text-button-label-text-color: #000000 !important;
+
+    text-shadow: none !important;
+    font-weight: 800 !important;
+    /* Kalın olsun */
+}
+
+/* Obsidian, Amber gibi çok açık butonlarda Hover yapınca parlatmak yerine KARART */
+body.theme-obsidian .create-btn-container .bot-creation-button:hover,
+body.theme-amber .create-btn-container .bot-creation-button:hover,
+body.theme-polar .create-btn-container .bot-creation-button:hover,
+body.theme-paper .create-btn-container .bot-creation-button:hover {
+    filter: brightness(0.9) !important;
+    /* %10 Karartma */
+}
+
+
+/* ============================================================
+   GRUP B: KOYU/DOYGUN BUTONLAR -> İÇERİK BEYAZ OLSUN
+   (Crimson, Ocean, Sunset, Nebula)
+   ============================================================ */
+
+body.theme-crimson .create-btn-container .bot-creation-button *,
+body.theme-ocean .create-btn-container .bot-creation-button *,
+body.theme-sunset .create-btn-container .bot-creation-button *,
+body.theme-nebula .create-btn-container .bot-creation-button * {
+
+    color: #ffffff !important;
+    /* BEYAZ YAZI */
+    fill: #ffffff !important;
+    /* BEYAZ İKON */
+
+    /* Google değişkenlerini beyaza zorla */
+    --mdc-filled-button-label-text-color: #ffffff !important;
+
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+    font-weight: 600 !important;
+}

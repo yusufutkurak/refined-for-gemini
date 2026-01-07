@@ -15,7 +15,7 @@ A powerful browser extension that enhances your Google Gemini experience with cu
 
 ## 📥 Installation
 
-* **Chrome Web Store:** [Link Gelecek]
+* **Chrome Web Store:** [https://chromewebstore.google.com/detail/refined-for-gemini-custom/ggdnmfmmhodkeacghfmpahncdffoebhm?authuser=0]
 * **Microsoft Edge Add-ons:** [https://microsoftedge.microsoft.com/addons/detail/domejnlopkhggmenfgcmcehijhlbhoca]
 
 ## 🛠️ Manual Installation (Developer Mode)
